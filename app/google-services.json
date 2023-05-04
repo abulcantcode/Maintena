@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "859520968582",
+    "project_id": "maintena-97bb2",
+    "storage_bucket": "maintena-97bb2.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:859520968582:android:c054e93d519adaca82ee07",
+        "android_client_info": {
+          "package_name": "com.example.maintena"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "859520968582-c4halq77fl46ju5u6j9h7gpl3mvsom1h.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC9Dle5EdP_hGgN3_ITXPtdwgjQqXJyOWo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "859520968582-c4halq77fl46ju5u6j9h7gpl3mvsom1h.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
