@@ -14,6 +14,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.TintTypedArray;
 
+import com.example.maintena.Model.User;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
@@ -76,20 +77,20 @@ public class SignInActivity extends AppCompatActivity {
                         getUserCollection(email).get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
                             @Override
                             public void onSuccess(DocumentSnapshot documentSnapshot) {
-//                                User user = documentSnapshot.toObject(User.class);
-//                                assert user != null;
-//                                Intent intent;
-//                                if (user.getDealer()){
-//                                    intent = new Intent(getApplicationContext(), HomeActivity.class);
-//                                    intent.putExtra("isDealer", true);
-//                                    startActivity(intent);
-//                                    finish();
-//                                } else {
-//                                    intent = new Intent(getApplicationContext(), HomeActivity.class);
-//                                    intent.putExtra("isDealer", false);
-//                                    startActivity(intent);
-//                                    finish();
-//                                }
+                                User user = documentSnapshot.toObject(User.class);
+                                assert user != null;
+                                Intent intent;
+                                if (user.getDealer()){
+                                    intent = new Intent(getApplicationContext(), DealerHomeActivity.class);
+                                    intent.putExtra("isDealer", true);
+                                    startActivity(intent);
+                                    finish();
+                                } else {
+                                    intent = new Intent(getApplicationContext(), GarageActivity.class);
+                                    intent.putExtra("isDealer", false);
+                                    startActivity(intent);
+                                    finish();
+                                }
                             }
                         });
                     } else {

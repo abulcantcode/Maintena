@@ -8,6 +8,7 @@ import android.os.Handler;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.maintena.Model.User;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -35,21 +36,21 @@ public class SplashActivity extends AppCompatActivity {
                     getUserCollection(currentUser.getEmail()).get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
                         @Override
                         public void onSuccess(DocumentSnapshot documentSnapshot) {
-//                            // Convert document response to an Object of type User
-//                            User user = documentSnapshot.toObject(User.class);
-//                            Intent intent;
-//                            assert user != null;
-//                            if (user.getDealer()){
-//                                intent = new Intent(getApplicationContext(), HomeActivity.class);
-//                                intent.putExtra("isDealer", true);
-//                                startActivity(intent);
-//                                finish();
-//                            } else {
-//                                intent = new Intent(getApplicationContext(), HomeActivity.class);
-//                                intent.putExtra("isDealer", false);
-//                                startActivity(intent);
-//                                finish();
-//                            }
+                            // Convert document response to an Object of type User
+                            User user = documentSnapshot.toObject(User.class);
+                            Intent intent;
+                            assert user != null;
+                            if (user.getDealer()){
+                                intent = new Intent(getApplicationContext(), DealerHomeActivity.class);
+                                intent.putExtra("isDealer", true);
+                                startActivity(intent);
+                                finish();
+                            } else {
+                                intent = new Intent(getApplicationContext(), GarageActivity.class);
+                                intent.putExtra("isDealer", false);
+                                startActivity(intent);
+                                finish();
+                            }
                         }
                     });
                 }
