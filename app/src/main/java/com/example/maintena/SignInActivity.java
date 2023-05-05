@@ -12,6 +12,7 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.TintTypedArray;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -77,11 +78,16 @@ public class SignInActivity extends AppCompatActivity {
                             public void onSuccess(DocumentSnapshot documentSnapshot) {
 //                                User user = documentSnapshot.toObject(User.class);
 //                                assert user != null;
+//                                Intent intent;
 //                                if (user.getDealer()){
-//                                    startActivity(new Intent(getApplicationContext(), HomeActivity.class));
+//                                    intent = new Intent(getApplicationContext(), HomeActivity.class);
+//                                    intent.putExtra("isDealer", true);
+//                                    startActivity(intent);
 //                                    finish();
 //                                } else {
-//                                    startActivity(new Intent(getApplicationContext(), MainActivity.class));
+//                                    intent = new Intent(getApplicationContext(), HomeActivity.class);
+//                                    intent.putExtra("isDealer", false);
+//                                    startActivity(intent);
 //                                    finish();
 //                                }
                             }

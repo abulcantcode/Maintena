@@ -37,12 +37,17 @@ public class SplashActivity extends AppCompatActivity {
                         public void onSuccess(DocumentSnapshot documentSnapshot) {
 //                            // Convert document response to an Object of type User
 //                            User user = documentSnapshot.toObject(User.class);
+//                            Intent intent;
 //                            assert user != null;
 //                            if (user.getDealer()){
-//                                startActivity(new Intent(getApplicationContext(), HomeActivity.class));
+//                                intent = new Intent(getApplicationContext(), HomeActivity.class);
+//                                intent.putExtra("isDealer", true);
+//                                startActivity(intent);
 //                                finish();
 //                            } else {
-//                                startActivity(new Intent(getApplicationContext(), MainActivity.class));
+//                                intent = new Intent(getApplicationContext(), HomeActivity.class);
+//                                intent.putExtra("isDealer", false);
+//                                startActivity(intent);
 //                                finish();
 //                            }
                         }
