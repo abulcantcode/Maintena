@@ -1,5 +1,7 @@
 package com.example.maintena;
 
+import static com.example.maintena.Utility.getUserCollection;
+
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
@@ -12,13 +14,14 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.maintena.Adapter.VehicleAdapter;
+import com.example.maintena.Model.User;
 import com.example.maintena.Model.Vehicle;
 import com.firebase.ui.firestore.FirestoreRecyclerOptions;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.Query;
-
-import java.util.Objects;
 
 // This class is responsible for dealing with the logic behind the activity_main (my garage) page.
 // This page will retrieve all vehicles associated with the users email id.
@@ -28,6 +31,7 @@ public class GarageActivity extends AppCompatActivity {
     RecyclerView recyclerView;
     ImageButton menuButton, backButton;
     VehicleAdapter vehicleAdapter;
+    Boolean isDealer = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,19 +45,34 @@ public class GarageActivity extends AppCompatActivity {
 
         backButton.setVisibility(View.GONE);
 
-        String userType = getIntent().getStringExtra("userType");
+        isDealer = getIntent().getBooleanExtra("isDealer", false);
 
-        if (Objects.equals(userType, "dealer")){
+        if (isDealer){
             backButton.setVisibility(View.VISIBLE);
+        } else {
+            getUserCollection(FirebaseAuth.getInstance().getCurrentUser().getEmail()).get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
+                @Override
+                public void onSuccess(DocumentSnapshot documentSnapshot) {
+                    User user = documentSnapshot.toObject(User.class);
+                    assert user != null;
+                    if(user.getDealer()){
+                        backButton.setVisibility(View.VISIBLE);
+                        isDealer = true;
+                    }
+                }
+            });
         }
 
         backButton.setOnClickListener(view -> finish());
-//        btnAddCar.setOnClickListener(view -> {
-//                Intent intent = new Intent(getApplicationContext(), VehicleDetailsActivity.class);
-//                intent.putExtra("isDealer", getIntent().getBooleanExtra("userType", false));
-//                startActivity(intent);
-//            });
+
+        btnAddCar.setOnClickListener(view -> {
+                Intent intent = new Intent(getApplicationContext(), VehicleDetailsActivity.class);
+                intent.putExtra("isDealer", isDealer);
+                startActivity(intent);
+            });
+
         menuButton.setOnClickListener(view -> showMenu());
+
         setUpRecyclerView();
     }
 
@@ -61,6 +80,7 @@ public class GarageActivity extends AppCompatActivity {
     private void showMenu() {
         PopupMenu popupMenu = new PopupMenu(getApplicationContext(), menuButton);
         popupMenu.getMenu().add("Logout");
+        popupMenu.getMenu().add("Pending Transfers");
         popupMenu.show();
         popupMenu.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
             @Override
@@ -69,6 +89,9 @@ public class GarageActivity extends AppCompatActivity {
                     FirebaseAuth.getInstance().signOut();
                     startActivity(new Intent(getApplicationContext(), SignInActivity.class));
                     finish();
+                    return true;
+                }else if(menuItem.getTitle()=="Pending Transfers"){
+                    startActivity(new Intent(getApplicationContext(), PendingVehiclesActivity.class));
                     return true;
                 }
                 return false;
@@ -80,11 +103,13 @@ public class GarageActivity extends AppCompatActivity {
     // This methods purpose is to retrieve vehicles which are associated with the users email ( stored in vehicles as 'owner' )
     // This method then sends the group of documents it retrieved to the vehicle adapter which generated cards to populate the layout.
     private void setUpRecyclerView() {
-        Query query = Utility.getVehicleCollectionReference().whereEqualTo("owner", FirebaseAuth.getInstance().getCurrentUser().getEmail());
+        Query query = Utility.getVehicleCollectionReference()
+                .whereEqualTo("owner", FirebaseAuth.getInstance().getCurrentUser().getEmail())
+                .whereEqualTo("pending", false);
         FirestoreRecyclerOptions<Vehicle> options = new FirestoreRecyclerOptions.Builder<Vehicle>()
                 .setQuery(query, Vehicle.class).build();
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        vehicleAdapter = new VehicleAdapter(options, this);
+        vehicleAdapter = new VehicleAdapter(options, this, isDealer);
         recyclerView.setAdapter(vehicleAdapter);
     }
 

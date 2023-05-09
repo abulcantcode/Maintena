@@ -12,6 +12,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
+import com.example.maintena.MaintenanceActivity;
 import com.example.maintena.Model.Vehicle;
 import com.example.maintena.R;
 import com.firebase.ui.firestore.FirestoreRecyclerAdapter;
@@ -21,6 +22,7 @@ import com.firebase.ui.firestore.FirestoreRecyclerOptions;
 public class VehicleAdapter extends FirestoreRecyclerAdapter<Vehicle, VehicleAdapter.VehicleViewHolder> {
 
     Context context;
+    Boolean isDealer;
 
     /**
      * Create a new RecyclerView adapter that listens to a Firestore Query.  See {@link
@@ -28,9 +30,10 @@ public class VehicleAdapter extends FirestoreRecyclerAdapter<Vehicle, VehicleAda
      *
      * @param options
      */
-    public VehicleAdapter(@NonNull FirestoreRecyclerOptions<Vehicle> options, Context context) {
+    public VehicleAdapter(@NonNull FirestoreRecyclerOptions<Vehicle> options, Context context, Boolean isDealer) {
         super(options);
         this.context = context;
+        this.isDealer = isDealer;
     }
 
     @Override
@@ -50,17 +53,14 @@ public class VehicleAdapter extends FirestoreRecyclerAdapter<Vehicle, VehicleAda
             holder.imgCar.setImageResource(R.drawable.placeholder_img);
         }
 
-//        holder.itemView.setOnClickListener(view -> {
-//            Intent intent = new Intent(context, MaintenanceActivity.class);
-//            intent.putExtra("numPlate", vehicle.getNumberPlate());
-//            intent.putExtra("name", vehicle.getName());
-//            intent.putExtra("make", vehicle.getMake());
-//            intent.putExtra("colour", vehicle.getColour());
-//            intent.putExtra("fuel", vehicle.getFuelType());
-//            String docId = this.getSnapshots().getSnapshot(position).getId();
-//            intent.putExtra("docId", docId);
-//            context.startActivity(intent);
-//        });
+        holder.itemView.setOnClickListener(view -> {
+            Intent intent = new Intent(context, MaintenanceActivity.class);
+            intent.putExtra("numPlate", vehicle.getNumberPlate());
+            String docId = this.getSnapshots().getSnapshot(position).getId();
+            intent.putExtra("docId", docId);
+            intent.putExtra("isDealer", isDealer);
+            context.startActivity(intent);
+        });
     }
 
     @NonNull

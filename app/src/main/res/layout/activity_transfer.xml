@@ -1,0 +1,266 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#DDDDDD"
+    tools:context=".TransferActivity"
+    android:padding="16dp">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/pageTitle">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/title"
+            android:text="Transfer Vehicle"
+            android:textSize="32sp"
+            android:textColor="@color/black"
+            android:textStyle="bold"/>
+
+        <ImageButton
+            android:layout_width="36dp"
+            android:layout_height="36dp"
+            android:id="@+id/btnSave"
+            android:src="@drawable/transfer"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            app:tint="@color/black" />
+
+    </RelativeLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/contentPanel"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/pageTitle"
+        android:layout_marginTop="10dp"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            app:layout_constraintBottom_toTopOf="@+id/btnCancel"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <ScrollView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginBottom="140dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:padding="16dp"
+                        android:orientation="vertical"
+                        android:layout_marginBottom="26dp"
+                        android:background="@drawable/rounded_corner"
+                        android:backgroundTint="@color/white">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:padding="8dp"
+                            android:background="@drawable/number_plate" >
+                            <TextView
+                                android:id="@+id/textNumPlate"
+                                android:padding="8dp"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:background="@drawable/number_plate2"
+                                android:hint="NUMBER PLATE"
+                                android:textColorHint="#8C783D"
+                                android:textStyle="bold"
+                                android:textAlignment="center"
+                                android:fontFamily="monospace"
+                                android:inputType="textCapCharacters"
+                                android:textColor="@color/black"
+                                android:textSize="24sp"/>
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/rounded_corner"
+                        android:backgroundTint="@color/white"
+                        android:orientation="vertical"
+                        android:padding="16dp">
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Vehicle Details:"
+                            android:textStyle="bold"
+                            android:layout_marginHorizontal="10dp"
+                            android:textColor="@color/darkGrey"
+                            android:maxLines="1"/>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical"
+                            android:padding="8dp">
+
+                            <TextView
+                                android:id="@+id/textName"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="8dp"
+                                android:hint="Car Name"
+                                android:padding="8dp"
+                                android:textColor="@color/black"
+                                android:textColorHint="@color/darkGrey" />
+
+                            <TextView
+                                android:id="@+id/textMake"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="8dp"
+                                android:hint="Make"
+                                android:padding="8dp"
+                                android:textColor="@color/black"
+                                android:textColorHint="@color/darkGrey" />
+
+                            <TextView
+                                android:id="@+id/textColour"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="8dp"
+                                android:hint="Colour"
+                                android:padding="8dp"
+                                android:textColor="@color/black"
+                                android:textColorHint="@color/darkGrey"
+                                android:maxLines="1"/>
+
+                            <TextView
+                                android:id="@+id/textFuel"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="8dp"
+                                android:hint="Fuel Type"
+                                android:padding="8dp"
+                                android:textColor="@color/black"
+                                android:textColorHint="@color/darkGrey"
+                                android:maxLines="1"/>
+
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginVertical="26dp"
+                        android:background="@drawable/rounded_corner"
+                        android:backgroundTint="@color/white"
+                        android:orientation="vertical"
+                        android:padding="16dp">
+
+                        <TextView
+                            android:id="@+id/editName"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="New Owner Details:"
+                            android:textStyle="bold"
+                            android:layout_marginHorizontal="10dp"
+                            android:textColor="@color/darkGrey"
+                            android:maxLines="1"/>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical"
+                            android:padding="8dp">
+
+                            <EditText
+                                android:id="@+id/textEmail"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:hint="New Owner Email"
+                                android:inputType="textEmailAddress"
+                                android:padding="8dp"
+                                android:textColor="@color/black"
+                                android:textColorHint="@color/darkGrey" />
+
+                            <RelativeLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:gravity="start">
+
+                                <Button
+                                    android:id="@+id/btnSearch"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="48dp"
+                                    android:backgroundTint="@color/red_700"
+                                    android:paddingHorizontal="30dp"
+                                    android:text="Search"
+                                    android:textColor="@color/white"
+                                    app:cornerRadius="10dp"/>
+
+                            </RelativeLayout>
+
+                            <TextView
+                                android:id="@+id/textUsername"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:hint="New Owner Username"
+                                android:padding="8dp"
+                                android:textColor="@color/black"
+                                android:textColorHint="@color/darkGrey" />
+
+                            <TextView
+                                android:id="@+id/textNameUser"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:hint="New Owner Name"
+                                android:padding="8dp"
+                                android:textColor="@color/black"
+                                android:textColorHint="@color/darkGrey" />
+
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+                </LinearLayout>
+            </ScrollView>
+
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/btnCancel"
+            android:layout_width="match_parent"
+            android:layout_height="62dp"
+            android:backgroundTint="@color/red_900"
+            android:text="Cancel"
+            android:textColor="@color/white"
+            app:cornerRadius="10dp"
+            app:layout_constraintBottom_toTopOf="@+id/btnConfirm"
+            android:layout_marginBottom="5dp" />
+
+        <Button
+            android:id="@+id/btnConfirm"
+            android:layout_width="match_parent"
+            android:layout_height="62dp"
+            android:backgroundTint="@color/red_700"
+            android:text="Confirm Transfer"
+            android:textColor="@color/white"
+            app:cornerRadius="10dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:layout_marginBottom="5dp" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</RelativeLayout>

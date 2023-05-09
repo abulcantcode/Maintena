@@ -2,6 +2,10 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
 
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+
     <application
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
@@ -12,10 +16,22 @@
         android:theme="@style/Theme.Maintena"
         tools:targetApi="31">
         <activity
-            android:name=".DealerHomeActivity"
+            android:name=".PendingVehiclesActivity"
             android:exported="false" />
         <activity
-            android:name=".GarageActivity"
+            android:name=".RejectActivity"
+            android:exported="false" />
+        <activity
+            android:name=".VerifyActivity"
+            android:exported="false" />
+        <activity
+            android:name=".PendingActivity"
+            android:exported="false" />
+        <activity
+            android:name=".RecordsActivity"
+            android:exported="false" />
+        <activity
+            android:name=".DealerHomeActivity"
             android:exported="false" />
         <activity
             android:name=".CreatePrivateActivity"
@@ -28,6 +44,24 @@
             android:exported="false" />
         <activity
             android:name=".SignInActivity"
+            android:exported="false" />
+        <activity
+            android:name=".TransferActivity"
+            android:exported="false" />
+        <activity
+            android:name=".JobDetailsActivity"
+            android:exported="false" />
+        <activity
+            android:name=".JobViewActivity"
+            android:exported="false" />
+        <activity
+            android:name=".MaintenanceActivity"
+            android:exported="false" />
+        <activity
+            android:name=".VehicleDetailsActivity"
+            android:exported="false" />
+        <activity
+            android:name=".GarageActivity"
             android:exported="false" />
         <activity
             android:name=".SplashActivity"

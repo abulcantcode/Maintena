@@ -2,8 +2,16 @@ package com.example.maintena.Model;
 
 // This is the object that the user details are stored in
 public class User {
-    String name, email;
+    String name, username, email;
     Boolean dealer;
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
 
     public String getName() {
         return name;

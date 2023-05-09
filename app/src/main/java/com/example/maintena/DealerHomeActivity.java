@@ -41,10 +41,10 @@ public class DealerHomeActivity extends AppCompatActivity {
             }
         });
 
-//        // navigation for recordsActivity
-//        btnAllRecs.setOnClickListener(view -> startActivity(new Intent(getApplicationContext(), RecordsActivity.class)));
-//        // navigation for pendingActivity
-//        btnPending.setOnClickListener(view -> startActivity(new Intent(getApplicationContext(), PendingActivity.class)));
+        // navigation for recordsActivity
+        btnAllRecs.setOnClickListener(view -> startActivity(new Intent(getApplicationContext(), RecordsActivity.class)));
+        // navigation for pendingActivity
+        btnPending.setOnClickListener(view -> startActivity(new Intent(getApplicationContext(), PendingActivity.class)));
 
     }
 
