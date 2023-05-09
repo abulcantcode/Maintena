@@ -23,7 +23,7 @@ import java.util.Map;
 
 public class CreatePrivateActivity extends AppCompatActivity {
 
-    EditText editEmail, editName, editPassword, editConfirmPassword;
+    EditText editEmail, editName, editUsername, editPassword, editConfirmPassword;
     Button buttingSignUp;
     TextView txtSignIn;
 
@@ -33,6 +33,7 @@ public class CreatePrivateActivity extends AppCompatActivity {
         setContentView(R.layout.activity_create_private);
 
         editName = findViewById(R.id.editName);
+        editUsername = findViewById(R.id.editUsername);
         editEmail = findViewById(R.id.editEmail);
         editPassword = findViewById(R.id.editPassword);
         editConfirmPassword = findViewById(R.id.editConfirmPassword);
@@ -53,11 +54,12 @@ public class CreatePrivateActivity extends AppCompatActivity {
     void createAccount(){
         createInProgress(true);
         String getName = editName.getText().toString();
+        String getUsername = editUsername.getText().toString();
         String getEmail = editEmail.getText().toString().toLowerCase();
         String getPsw = editPassword.getText().toString();
         String getConfirmPsw = editConfirmPassword.getText().toString();
 
-        boolean isValidated = validateData(getName, getEmail, getPsw, getConfirmPsw);
+        boolean isValidated = validateData(getName, getUsername, getEmail, getPsw, getConfirmPsw);
 
         if(!isValidated){
             createInProgress(false);
@@ -67,6 +69,7 @@ public class CreatePrivateActivity extends AppCompatActivity {
         // Building hashmap to store user in firestore database
         Map<String, Object> user = new HashMap<>();
         user.put("name", getName);
+        user.put("username", getUsername);
         user.put("email", getEmail);
         user.put("dealer", false);
 
@@ -89,6 +92,7 @@ public class CreatePrivateActivity extends AppCompatActivity {
                         @Override
                         public void onComplete(@NonNull Task<Void> task) {
                             showToast(getApplicationContext(), "Successfully created account");
+                            // This is a built in feature of firebase where it send an email verification link to the email used to sign up
                             firebaseAuth.getCurrentUser().sendEmailVerification();
                             firebaseAuth.signOut();
                             finish();
@@ -108,9 +112,13 @@ public class CreatePrivateActivity extends AppCompatActivity {
     }
 
     // This method is responsible for making sure all fields have been added
-    boolean validateData(String name, String email, String password, String confirmPassword){
+    boolean validateData(String name, String username, String email, String password, String confirmPassword){
         if(name.isEmpty()){
             editName.setError("Name cannot be empty");
+            return false;
+        }
+        if(username.isEmpty()){
+            editUsername.setError("Username cannot be empty");
             return false;
         }
         if(!Patterns.EMAIL_ADDRESS.matcher(email).matches()){

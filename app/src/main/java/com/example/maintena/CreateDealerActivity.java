@@ -76,6 +76,7 @@ public class CreateDealerActivity extends AppCompatActivity {
         // build user object
         Map<String, Object> user = new HashMap<>();
         user.put("name", getName);
+        user.put("username", getName);
         user.put("email", getEmail);
         user.put("dealer", true);
 

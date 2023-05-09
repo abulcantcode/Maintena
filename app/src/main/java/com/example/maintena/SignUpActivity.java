@@ -17,10 +17,13 @@ public class SignUpActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sign_up);
 
+        // Here, the xml page is being connected to the defined objects
         btnPrivate = findViewById(R.id.btnPrivate);
         btnDealer = findViewById(R.id.btnDealer);
         txtSignIn = findViewById(R.id.txtSignIn);
 
+
+        // Setting up navigation
         btnPrivate.setOnClickListener(view -> goToPrivate());
 
         btnDealer.setOnClickListener(view -> goToDealer());

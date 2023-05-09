@@ -12,7 +12,6 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.TintTypedArray;
 
 import com.example.maintena.Model.User;
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -33,11 +32,13 @@ public class SignInActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sign_in);
 
+        // Here, the xml page is being connected to the defined objects
         editEmail = findViewById(R.id.editEmail);
         editPassword = findViewById(R.id.editPassword);
         buttingLogin = findViewById(R.id.btnLogin);
         txtSignUp = findViewById(R.id.txtSignUp);
 
+        // Setting up navigation
         buttingLogin.setOnClickListener(view -> loginUser());
 
         txtSignUp.setOnClickListener(view -> goToSignUp());
@@ -94,7 +95,7 @@ public class SignInActivity extends AppCompatActivity {
                             }
                         });
                     } else {
-                        Utility.showToast(getApplicationContext(), "Email is not verified");
+                        showToast(getApplicationContext(), "Email is not verified");
                     }
                 } else {
                     signingInProgress(false);
@@ -105,10 +106,12 @@ public class SignInActivity extends AppCompatActivity {
 
     }
 
+    // this disables the sign in button once pressed
     void signingInProgress(boolean inProgress){
         buttingLogin.setEnabled(!inProgress);
     }
 
+    // this is the method which checks the validation
     boolean validateData(String email, String password){
         if(!Patterns.EMAIL_ADDRESS.matcher(email).matches()){
             editEmail.setError("Email is invalid");

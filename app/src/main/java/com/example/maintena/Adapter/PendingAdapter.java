@@ -13,10 +13,10 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
-import com.example.carpromaintenance.JobViewActivity;
-import com.example.carpromaintenance.Model.JobDetails;
-import com.example.carpromaintenance.R;
-import com.example.carpromaintenance.VerifyActivity;
+import com.example.maintena.JobViewActivity;
+import com.example.maintena.Model.JobDetails;
+import com.example.maintena.R;
+import com.example.maintena.VerifyActivity;
 import com.firebase.ui.firestore.FirestoreRecyclerAdapter;
 import com.firebase.ui.firestore.FirestoreRecyclerOptions;
 

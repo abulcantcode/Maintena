@@ -24,22 +24,22 @@ public class Utility {
     }
 
     // showToast is used to display a popup message
-    static void showToast(Context context, String message){
+    public static void showToast(Context context, String message){
         Toast.makeText(context, message, Toast.LENGTH_SHORT).show();
     }
     // getVehicleCollectionReference is used to get a reference of the vehicles collection within the firestore db
-    static CollectionReference getVehicleCollectionReference(){
+    public static CollectionReference getVehicleCollectionReference(){
         return FirebaseFirestore.getInstance().collection("vehicles");
     }
     // getJobCollectionReference is used to get a reference of the jobs collection within the firestore db
-    static CollectionReference getJobCollectionReference(){
-        return FirebaseFirestore.getInstance().collection("jobs");
+    public static CollectionReference getRecordCollectionReference(){
+        return FirebaseFirestore.getInstance().collection("records");
     }
-    // getUsers is used to get a reference of the users collection within the firestore db
+    // getUserCollection is used to get a reference of the users collection within the firestore db
     static DocumentReference getUserCollection(String email){
         return FirebaseFirestore.getInstance().collection("users").document(email);
     }
-    // getDealers is used to get a reference of the dealers collection within the firestore db
+    // getDealerCollection is used to get a reference of the dealers collection within the firestore db
     static DocumentReference getDealerCollection(String email){
         return FirebaseFirestore.getInstance().collection("dealers").document(email);
     }

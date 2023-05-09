@@ -13,9 +13,9 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
-import com.example.carpromaintenance.JobViewActivity;
-import com.example.carpromaintenance.Model.JobDetails;
-import com.example.carpromaintenance.R;
+import com.example.maintena.JobViewActivity;
+import com.example.maintena.Model.JobDetails;
+import com.example.maintena.R;
 import com.firebase.ui.firestore.FirestoreRecyclerAdapter;
 import com.firebase.ui.firestore.FirestoreRecyclerOptions;
 
@@ -23,7 +23,6 @@ import com.firebase.ui.firestore.FirestoreRecyclerOptions;
 public class JobAdapter extends FirestoreRecyclerAdapter<JobDetails, JobAdapter.JobViewHolder> {
 
     Context context;
-
 
     /**
      * Create a new RecyclerView adapter that listens to a Firestore Query.  See {@link
@@ -76,7 +75,6 @@ public class JobAdapter extends FirestoreRecyclerAdapter<JobDetails, JobAdapter.
 
         });
     }
-
 
     // This method is called when the RecyclerView needs a new ViewHolder of the given type to represent an item.
     // In this case, it inflates the job_list_item.xml layout and returns a new JobViewHolder object that contains references to the views inside the layout.

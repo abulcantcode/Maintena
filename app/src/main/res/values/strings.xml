@@ -1,3 +1,24 @@
 <resources>
     <string name="app_name">Maintena</string>
+    <string-array name="Records">
+        <item>Full service</item>
+        <item>Oil change</item>
+        <item>Tire rotation</item>
+        <item>Brake service</item>
+        <item>Battery replacement</item>
+        <item>Air filter replacement</item>
+        <item>Engine tune-up</item>
+        <item>Transmission service</item>
+        <item>Wheel alignment</item>
+        <item>Suspension repair</item>
+        <item>Blinker fluid</item>
+        <item>Fuel system cleaning</item>
+        <item>Coolant flush</item>
+        <item>Power steering service</item>
+        <item>Exhaust system repair</item>
+        <item>Timing service</item>
+        <item>Spark plug replacement</item>
+        <item>Headlight and taillight replacement</item>
+        <item>Windshield wiper blade replacement</item>
+    </string-array>
 </resources>

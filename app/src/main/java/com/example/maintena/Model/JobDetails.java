@@ -3,9 +3,25 @@ package com.example.maintena.Model;
 // This is the object that the job detials are stored in
 public class JobDetails {
 
-    String numberPlate, title, description, name, address, postcode, contact, comment, imgUrl, owner, date, millage;
+    String vehicleID, numberPlate, title, description, name, address, postcode, contact, comment, imgUrl, owner, date, millage, phone;
     Boolean verified, requested, pending;
     Double price;
+
+    public String getVehicleID() {
+        return vehicleID;
+    }
+
+    public void setVehicleID(String vehicleID) {
+        this.vehicleID = vehicleID;
+    }
+
+    public String getPhone() {
+        return phone;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
+    }
 
     public String getOwner() {
         return owner;
