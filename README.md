@@ -49,13 +49,6 @@ That's it! You should now be able to use the CarPro Maintenance app on the virtu
  
  - app/src/google-services.json - contains google-services which allows app to connect to database
 
-# Pre made accounts
-Pre made accounts: 
-
-Dealer - Email: 9chowdhury@gmail.com  Password: test123
-
-Private - Email: abulchwdhury@gmail.com  Password: test123
-
 # Tips for Testing 
 
 - Whne creating an account, be sure to use an email that can be accessed. You cannot log in without clicking the verify link sent to your email once you have signed up
